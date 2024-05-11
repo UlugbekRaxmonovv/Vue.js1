@@ -9,7 +9,8 @@
   <SorchPanel/>
   <AppFilter/>
     </div>
-    <MovieList :moves="moves" />
+    <MovieList :moves="moves" 
+     @onLike="onLike" />
     <MoveAddForm
      @createMovies="createMovies"
      />
@@ -39,18 +40,21 @@ export default {
             viewers:811,
             like:true,
             favourite:false,
+            id:1,
         },
         {
             name:'Ertigutu',
             viewers:711,
             like:false,
             favourite:true,
+            id:2,
         },
         {
             name:'Sizan',
             viewers:411,
-            like:false,
+            like:true,
             favorite:false,
+            id:3,
         },
         
        ],
@@ -59,9 +63,15 @@ export default {
    methods:{
     createMovies(etim){
      this.moves.push(etim)
-
-
     },
+    onLike(id){
+      const index = this.moves.map(item => {
+        if(item.id == id){
+          item.like = !true
+        }
+        return item;
+      })
+    }
    },
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
     <li class="list-group-etim d-flex justify-content-between" 
     :class="[{like: movie.like}],{favourite: movie.favourite}">
-        <span class="list-group-etim-label"> {{ movie.name }}</span>
+        <span v-on:click='onLike' class="list-group-etim-label"> {{ movie.name }}</span>
         <input type="number"   class="list-group-etim-input" v-bind:value="movie.viewers"/>
         <div class="d-flex justify-content-center align-items-center"> 
 
@@ -25,6 +25,11 @@ export default {
             required:true,
         },
     },
+    methods:{
+        onLike(){
+        this.$emit('onLike', this.movie.id);
+        }
+}
 }
 </script>
 <style scoped>

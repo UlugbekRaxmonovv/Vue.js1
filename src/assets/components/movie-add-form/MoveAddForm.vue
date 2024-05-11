@@ -27,12 +27,13 @@ export default {
         }
     },
     methods: {
-    AddMove(e){
-        const newData={
+    AddMove(){
+        const newData =  {
                name:this.name,
             viewers:this.viewers,
             like:false,
             favourite:false,
+            id: Date.now(),
         }
         this.$emit('createMovies', newData)
              this.name =""
